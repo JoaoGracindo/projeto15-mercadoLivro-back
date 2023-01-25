@@ -1,5 +1,5 @@
-import { signUpSchema } from "../schemas/userSignUpSchema";
-import usersCollection from '../database.js';
+import { signUpSchema } from "../schemas/userSignUpSchema.js";
+import {usersCollection} from '../database.js';
 
 export async function signUpMiddleware(req, res, next){
 
@@ -12,6 +12,7 @@ export async function signUpMiddleware(req, res, next){
     }
 
     const userExists =  await usersCollection.findOne({email: newUser.email});
+
     if(userExists) return res.status(409).send('Usuario já existe');
 
     next();
