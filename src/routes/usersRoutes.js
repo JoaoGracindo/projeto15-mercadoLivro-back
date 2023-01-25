@@ -6,5 +6,6 @@ import { signUpMiddleware } from "../middlewares/signUpMiddleware.js";
 const router = Router();
 
 router.post('/sign-up',signUpMiddleware, postUserController);
+router.post('/')
 
 export default router;
