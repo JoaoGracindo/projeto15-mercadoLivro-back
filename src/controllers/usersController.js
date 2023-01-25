@@ -1,4 +1,7 @@
+import bcrypt from 'bcrypt';
+
 import { usersCollection } from "../database.js";
+
 
 export async function postUserController(req, res){
 
@@ -7,14 +10,14 @@ export async function postUserController(req, res){
     const newUser = {
         name,
         email,
-        password
-    }
+        password: bcrypt.hashSync(password, 10)
+    };
 
     try{
-        await usersCollection.insertOne()
+        await usersCollection.insertOne(newUser);
 
     }catch(err){
         res.status(500).send(err);
-
     }
+    return res.sendStatus(201);
 }
