@@ -8,8 +8,10 @@ await mongoClient.connect();
 const db = mongoClient.db();
 
 const usersCollection = db.collection('users');
+const sessionsCollection = db.collection('sessions');
 
 
 export {
-    usersCollection
+    usersCollection,
+    sessionsCollection
 };
