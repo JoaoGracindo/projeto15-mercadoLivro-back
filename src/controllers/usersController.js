@@ -11,7 +11,8 @@ export async function postUserController(req, res){
     const newUser = {
         name,
         email,
-        password: bcrypt.hashSync(password, 10)
+        password: bcrypt.hashSync(password, 10),
+        shoppingCart:[]
     };
 
     try{

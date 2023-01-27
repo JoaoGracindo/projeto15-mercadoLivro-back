@@ -9,9 +9,11 @@ const db = mongoClient.db();
 
 const usersCollection = db.collection('users');
 const sessionsCollection = db.collection('sessions');
+const purchasesCollection = db.collection('purchases');
 
 
 export {
     usersCollection,
-    sessionsCollection
+    sessionsCollection,
+    purchasesCollection
 };
