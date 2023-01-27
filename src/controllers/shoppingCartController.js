@@ -15,5 +15,7 @@ export async function AddToCart(req,res){
 
 export async function GetCart(req,res){
     const user = res.locals.session?.userId;
-    const cart =  usersCollection.find({_id: user}).toArray();
+    const cart = await usersCollection.findOne({ _id: user});
+    if(!cart) res.status(409).send('usuário não encontrado');
+    res.status(200).send(cart.shoppingCart);
 }
