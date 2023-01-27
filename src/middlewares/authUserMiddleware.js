@@ -1,10 +1,10 @@
 import { sessionsCollection } from "../database.js";
 
-export async function authUserMiddleware(req,res,next){
+export async function authUserMiddleware(req, res, next) {
     const token = req.headers.authorization?.replace('Bearer ', '');
-    if(!token) return res.status(422).send("Você não tem autorização");
+    if (!token) return res.status(422).send("Você não tem autorização");
 
-    try{
+    try {
         const session = await sessionsCollection.findOne({ token });
         if (!session) return res.status(422).send("Você não tem autorização");
 
@@ -12,7 +12,7 @@ export async function authUserMiddleware(req,res,next){
 
         next()
 
-    }catch(err){
+    } catch (err) {
         return res.status(500).send(err);
     }
 }

@@ -6,4 +6,4 @@ const productAddToCartSchema = Joi.object({
     image: Joi.string().uri().required()
 })
 
-export {productAddToCartSchema};
+export { productAddToCartSchema };
